@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CRUDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tb_PersonasFisicas">
+          <Key>
+            <PropertyRef Name="IdPersonaFisica" />
+          </Key>
+          <Property Name="IdPersonaFisica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaRegistro" Type="datetime" />
+          <Property Name="FechaActualizacion" Type="datetime" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" />
+          <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" />
+          <Property Name="RFC" Type="varchar" MaxLength="13" />
+          <Property Name="FechaNacimiento" Type="date" />
+          <Property Name="UsuarioAgrega" Type="int" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <Function Name="sp_ActualizarPersonaFisica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdPersonaFisica" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
+          <Parameter Name="RFC" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="UsuarioAgrega" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_AgregarPersonaFisica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
+          <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
+          <Parameter Name="RFC" Type="varchar" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="UsuarioAgrega" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_EliminarPersonaFisica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdPersonaFisica" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="CRUDModelStoreContainer">
+          <EntitySet Name="Tb_PersonasFisicas" EntityType="Self.Tb_PersonasFisicas" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CRUDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tb_PersonasFisicas">
+          <Key>
+            <PropertyRef Name="IdPersonaFisica" />
+          </Key>
+          <Property Name="IdPersonaFisica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RFC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioAgrega" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="CRUDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tb_PersonasFisicas" EntityType="Self.Tb_PersonasFisicas" />
+          <FunctionImport Name="sp_ActualizarPersonaFisica" ReturnType="Collection(CRUDModel.sp_ActualizarPersonaFisica_Result)">
+            <Parameter Name="IdPersonaFisica" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="RFC" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="UsuarioAgrega" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_AgregarPersonaFisica" ReturnType="Collection(CRUDModel.sp_AgregarPersonaFisica_Result)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="RFC" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="UsuarioAgrega" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EliminarPersonaFisica" ReturnType="Collection(CRUDModel.sp_EliminarPersonaFisica_Result)">
+            <Parameter Name="IdPersonaFisica" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_ActualizarPersonaFisica_Result">
+          <Property Type="Int32" Name="ERROR" Nullable="true" />
+          <Property Type="String" Name="MENSAJEERROR" Nullable="false" MaxLength="16" />
+        </ComplexType>
+        <ComplexType Name="sp_AgregarPersonaFisica_Result">
+          <Property Type="Int32" Name="ERROR" Nullable="true" />
+          <Property Type="String" Name="MENSAJEERROR" Nullable="false" MaxLength="16" />
+        </ComplexType>
+        <ComplexType Name="sp_EliminarPersonaFisica_Result">
+          <Property Type="Int32" Name="ERROR" Nullable="true" />
+          <Property Type="String" Name="MENSAJEERROR" Nullable="false" MaxLength="15" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CRUDModelStoreContainer" CdmEntityContainer="CRUDEntities">
+          <EntitySetMapping Name="Tb_PersonasFisicas">
+            <EntityTypeMapping TypeName="CRUDModel.Tb_PersonasFisicas">
+              <MappingFragment StoreEntitySet="Tb_PersonasFisicas">
+                <ScalarProperty Name="IdPersonaFisica" ColumnName="IdPersonaFisica" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="UsuarioAgrega" ColumnName="UsuarioAgrega" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_ActualizarPersonaFisica" FunctionName="CRUDModel.Store.sp_ActualizarPersonaFisica">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRUDModel.sp_ActualizarPersonaFisica_Result">
+                <ScalarProperty Name="ERROR" ColumnName="ERROR" />
+                <ScalarProperty Name="MENSAJEERROR" ColumnName="MENSAJEERROR" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_AgregarPersonaFisica" FunctionName="CRUDModel.Store.sp_AgregarPersonaFisica">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRUDModel.sp_AgregarPersonaFisica_Result">
+                <ScalarProperty Name="ERROR" ColumnName="ERROR" />
+                <ScalarProperty Name="MENSAJEERROR" ColumnName="MENSAJEERROR" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_EliminarPersonaFisica" FunctionName="CRUDModel.Store.sp_EliminarPersonaFisica">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CRUDModel.sp_EliminarPersonaFisica_Result">
+                <ScalarProperty Name="ERROR" ColumnName="ERROR" />
+                <ScalarProperty Name="MENSAJEERROR" ColumnName="MENSAJEERROR" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CRUDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Tb_PersonasFisicas">
+    <Key>
+      <PropertyRef Name="IdPersonaFisica" />
+    </Key>
+    <Property Name="IdPersonaFisica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" />
+    <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" />
+    <Property Name="RFC" Type="varchar" MaxLength="13" />
+    <Property Name="FechaNacimiento" Type="date" />
+    <Property Name="UsuarioAgrega" Type="int" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <Function Name="sp_ActualizarPersonaFisica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPersonaFisica" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
+    <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
+    <Parameter Name="RFC" Type="varchar" Mode="In" />
+    <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+    <Parameter Name="UsuarioAgrega" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_AgregarPersonaFisica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
+    <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
+    <Parameter Name="RFC" Type="varchar" Mode="In" />
+    <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+    <Parameter Name="UsuarioAgrega" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_EliminarPersonaFisica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPersonaFisica" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="CRUDModelStoreContainer">
+    <EntitySet Name="Tb_PersonasFisicas" EntityType="Self.Tb_PersonasFisicas" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

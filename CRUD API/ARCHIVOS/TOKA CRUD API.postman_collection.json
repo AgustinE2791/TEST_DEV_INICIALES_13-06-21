@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "0809ede0-59aa-4030-907e-43f8ad368e8b",
+		"name": "TOKA CRUD API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PF CREATE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Nombre\": \"agustin5\",\r\n  \"ApellidoPaterno\": \"Aguirre\",\r\n  \"ApellidoMaterno\": \"Cardenas\",\r\n  \"RFC\": \"AUCA910627A\",\r\n  \"FechaNacimiento\": \"2021-06-12T15:09:40.9853757-05:00\",\r\n  \"UsuarioAgrega\": 1,\r\n  \"Activo\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44387/api/PersonasFisicas",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44387",
+					"path": [
+						"api",
+						"PersonasFisicas"
+					]
+				},
+				"description": "Crear una persona fisica"
+			},
+			"response": []
+		},
+		{
+			"name": "PF GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44387/api/PersonasFisicas",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44387",
+					"path": [
+						"api",
+						"PersonasFisicas"
+					]
+				},
+				"description": "Obtener Informacion de personas fisicas"
+			},
+			"response": []
+		},
+		{
+			"name": "PF GET ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44387/api/PersonasFisicas/4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44387",
+					"path": [
+						"api",
+						"PersonasFisicas",
+						"4"
+					]
+				},
+				"description": "Obtener informacion de persona fisica Id"
+			},
+			"response": []
+		},
+		{
+			"name": "PF PUT",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"IdPersonaFisica\": 1,\r\n  \"FechaRegistro\": \"2021-06-12T15:09:40.9853757-05:00\",\r\n  \"FechaActualizacion\": \"2021-06-12T15:09:40.9853757-05:00\",\r\n  \"Nombre\": \"Agustin2\",\r\n  \"ApellidoPaterno\": \"Aguirre\",\r\n  \"ApellidoMaterno\": \"Cardenas\",\r\n  \"RFC\": \"AUCA910627AQ9\",\r\n  \"FechaNacimiento\": \"2021-06-12T15:09:40.9853757-05:00\",\r\n  \"UsuarioAgrega\": 1,\r\n  \"Activo\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44387/api/PersonasFisicas/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44387",
+					"path": [
+						"api",
+						"PersonasFisicas",
+						"1"
+					]
+				},
+				"description": "Actualizar datos de persona fisica"
+			},
+			"response": []
+		},
+		{
+			"name": "PF DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44387/api/PersonasFisicas/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44387",
+					"path": [
+						"api",
+						"PersonasFisicas",
+						"1"
+					]
+				},
+				"description": "Eliminar registro de persona fisica"
+			},
+			"response": []
+		}
+	]
+}

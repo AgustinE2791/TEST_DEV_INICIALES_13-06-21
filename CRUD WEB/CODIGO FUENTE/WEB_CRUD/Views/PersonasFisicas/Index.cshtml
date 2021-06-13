@@ -1,0 +1,86 @@
+﻿@using PagedList.Mvc;
+@*@model IEnumerable<WEB_CRUD.Tb_PersonasFisicas>*@
+@model PagedList.IPagedList<WEB_CRUD.Tb_PersonasFisicas>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/css/principal.css" type="text/css" />
+
+<br />
+<h2>CRUD PERSONA FISICA</h2>
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <p class="button button5">
+            @Html.ActionLink("Crear nuevo registro", "Create")
+        </p>
+        <br />        
+    </div>
+    <div class="col-md-4">
+        @using (Html.BeginForm("ExportToExcel", "PersonasFisicas", FormMethod.Get))
+        {
+            <input type="submit" value="Exportar a Excel" class="button" />
+        }
+    </div>
+    <div class="col-md-4">
+        <p class="button button2">
+            @Html.ActionLink("Consultar Reporte API", "Index", "Reporte")
+        </p>
+        <br />
+        <br />
+        <br />
+    </div>
+</div>
+<br />
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRegistro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaActualizacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoPaterno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoMaterno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RFC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsuarioAgrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activo)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.IdPersonaFisica }) |
+                @Html.ActionLink("Detalle", "Details", new { id = item.IdPersonaFisica }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.IdPersonaFisica })
+            </td>
+        </tr>
+
+    }
+
+</table>
+
+<br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

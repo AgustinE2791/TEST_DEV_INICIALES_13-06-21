@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CRUDModelStoreContainer" CdmEntityContainer="CRUDEntities">
+    <EntitySetMapping Name="Tb_PersonasFisicas">
+      <EntityTypeMapping TypeName="CRUDModel.Tb_PersonasFisicas">
+        <MappingFragment StoreEntitySet="Tb_PersonasFisicas">
+          <ScalarProperty Name="IdPersonaFisica" ColumnName="IdPersonaFisica" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="RFC" ColumnName="RFC" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="UsuarioAgrega" ColumnName="UsuarioAgrega" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_ActualizarPersonaFisica" FunctionName="CRUDModel.Store.sp_ActualizarPersonaFisica">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CRUDModel.sp_ActualizarPersonaFisica_Result">
+          <ScalarProperty Name="ERROR" ColumnName="ERROR" />
+          <ScalarProperty Name="MENSAJEERROR" ColumnName="MENSAJEERROR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_AgregarPersonaFisica" FunctionName="CRUDModel.Store.sp_AgregarPersonaFisica">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CRUDModel.sp_AgregarPersonaFisica_Result">
+          <ScalarProperty Name="ERROR" ColumnName="ERROR" />
+          <ScalarProperty Name="MENSAJEERROR" ColumnName="MENSAJEERROR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_EliminarPersonaFisica" FunctionName="CRUDModel.Store.sp_EliminarPersonaFisica">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CRUDModel.sp_EliminarPersonaFisica_Result">
+          <ScalarProperty Name="ERROR" ColumnName="ERROR" />
+          <ScalarProperty Name="MENSAJEERROR" ColumnName="MENSAJEERROR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
